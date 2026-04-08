@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Academy</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#c9a84c',
+            goldLight: '#e8d48b',
+            dark: '#0a0a0a',
+            darkCard: '#111111',
+            darkSurface: '#1a1a1a',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body { font-family: 'DM Sans', sans-serif; }
+    .font-display { font-family: 'Playfair Display', serif; }
+
+    .glass-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,168,76,0.15);
+      backdrop-filter: blur(12px);
+    }
+
+    .gold-glow {
+      box-shadow: 0 0 40px rgba(201,168,76,0.15), 0 0 80px rgba(201,168,76,0.05);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #c9a84c 0%, #e8d48b 50%, #c9a84c 100%);
+      background-size: 200% 200%;
+      color: #0a0a0a;
+      font-weight: 700;
+      transition: all 0.4s ease;
+    }
+    .btn-gold:hover {
+      background-position: 100% 100%;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201,168,76,0.4);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: #fff;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37,211,102,0.3);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in {
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.25s; }
+    .delay-3 { animation-delay: 0.4s; }
+    .delay-4 { animation-delay: 0.55s; }
+
+    .pricing-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .pricing-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(201,168,76,0.5);
+      box-shadow: 0 20px 60px rgba(201,168,76,0.15);
+    }
+
+    .hero-gradient {
+      background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.04) 0%, transparent 50%);
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+    }
+
+    .img-wrapper {
+      overflow: hidden;
+      border-radius: 0.75rem 0.75rem 0 0;
+    }
+    .img-wrapper img {
+      transition: transform 0.6s ease;
+      width: 100%; height: 200px; object-fit: cover;
+    }
+    .pricing-card:hover .img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .float-anim {
+      animation: floatY 6s ease-in-out infinite;
+    }
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .pulse-ring {
+      animation: pulseRing 2s ease-out infinite;
+    }
+    @keyframes pulseRing {
+      0% { box-shadow: 0 0 0 0 rgba(201,168,76,0.4); }
+      100% { box-shadow: 0 0 0 20px rgba(201,168,76,0); }
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-dark text-white overflow-auto">
+  <div id="app-wrapper" class="w-full min-h-full"><!-- HERO -->
+   <section class="hero-gradient relative overflow-hidden" style="min-height: 90%;">
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,<svg width=\" 60\ height="\&quot;60\&quot;" viewbox="\&quot;0" 0 60 xmlns="\&quot;http://www.w3.org/2000/svg\&quot;">
+     <g fill="\&quot;none\&quot;" fill-rule="\&quot;evenodd\&quot;">
+      <g fill="\&quot;%23c9a84c\&quot;" fill-opacity="\&quot;1\&quot;">
+       <path d="\&quot;M36" 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30v0h-2v4h-4v2h4v4h2v6h4v4h-4zm6 34v-4h4v4h0v2h4v4h2v-4h4v-2h6zm6 4v0h4v4h0v2h4v4h2v6h4v4h6z\ />
+      </g>
+     </g>');"&gt;
+    </div>
+    <div class="max-w-5xl mx-auto px-6 pt-20 pb-16 flex flex-col items-center text-center relative z-10"><!-- Badge -->
+     <div class="animate-in delay-1 inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8"><span class="w-2 h-2 rounded-full bg-gold pulse-ring"></span> <span class="text-gold text-sm font-medium tracking-wide uppercase">Limited Spots Available</span>
+     </div>
+     <h1 id="hero-headline" class="animate-in delay-2 font-display text-4xl md:text-6xl lg:text-7xl font-800 leading-tight max-w-4xl">Start Making Money Online From Zero — <span class="text-gold">Even If You Have No Experience</span></h1>
+     <p id="hero-sub" class="animate-in delay-3 mt-8 text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed">Learn step-by-step how to build real online income using Digital Products, Dropshipping, and Ecommerce with proven strategies.</p>
+     <div class="animate-in delay-4 mt-10 flex flex-col sm:flex-row gap-4"><a href="#courses" id="hero-cta" class="btn-gold px-10 py-4 rounded-xl text-lg tracking-wide text-center">Buy Now &amp; Start Today</a> <a href="https://wa.me/212780172071" target="_blank" rel="noopener noreferrer" class="btn-whatsapp px-10 py-4 rounded-xl text-lg flex items-center justify-center gap-2"> <i data-lucide="message-circle" style="width:20px;height:20px;"></i> Contact Us on WhatsApp </a>
+     </div><!-- Stats -->
+     <div class="animate-in delay-4 mt-16 grid grid-cols-3 gap-8 md:gap-16">
+      <div class="text-center">
+       <div class="text-3xl md:text-4xl font-display font-bold text-gold">
+        500+
+       </div>
+       <div class="text-sm text-gray-500 mt-1">
+        Students
+       </div>
+      </div>
+      <div class="text-center">
+       <div class="text-3xl md:text-4xl font-display font-bold text-gold">
+        3
+       </div>
+       <div class="text-sm text-gray-500 mt-1">
+        Courses
+       </div>
+      </div>
+      <div class="text-center">
+       <div class="text-3xl md:text-4xl font-display font-bold text-gold">
+        24/7
+       </div>
+       <div class="text-sm text-gray-500 mt-1">
+        Support
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider mx-auto max-w-4xl"></div><!-- ABOUT -->
+   <section class="py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+     <div class="text-center mb-14"><span class="text-gold text-sm font-semibold uppercase tracking-widest">About Us</span>
+      <h2 id="about-title" class="font-display text-3xl md:text-5xl font-bold mt-3">Why Choose Our Academy?</h2>
+      <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Everything you need to start your online business — structured, proven, and beginner-friendly.</p>
+     </div>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="glass-card rounded-2xl p-6 text-center hover:border-gold/40 transition-all duration-300">
+       <div class="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="play-circle" style="width:28px;height:28px;color:#c9a84c;"></i>
+       </div>
+       <h3 class="text-lg font-semibold mb-2">Video Courses</h3>
+       <p class="text-gray-400 text-sm">Step-by-step video lessons covering every detail from A to Z.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6 text-center hover:border-gold/40 transition-all duration-300">
+       <div class="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="file-text" style="width:28px;height:28px;color:#c9a84c;"></i>
+       </div>
+       <h3 class="text-lg font-semibold mb-2">PDF Guides</h3>
+       <p class="text-gray-400 text-sm">Detailed downloadable guides with strategies and checklists.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6 text-center hover:border-gold/40 transition-all duration-300">
+       <div class="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="rocket" style="width:28px;height:28px;color:#c9a84c;"></i>
+       </div>
+       <h3 class="text-lg font-semibold mb-2">Real Strategies</h3>
+       <p class="text-gray-400 text-sm">Proven methods used by real entrepreneurs making money online.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6 text-center hover:border-gold/40 transition-all duration-300">
+       <div class="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="smile" style="width:28px;height:28px;color:#c9a84c;"></i>
+       </div>
+       <h3 class="text-lg font-semibold mb-2">Beginner-Friendly</h3>
+       <p class="text-gray-400 text-sm">No experience needed. We start from absolute zero.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6 text-center hover:border-gold/40 transition-all duration-300">
+       <div class="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="infinity" style="width:28px;height:28px;color:#c9a84c;"></i>
+       </div>
+       <h3 class="text-lg font-semibold mb-2">Lifetime Access</h3>
+       <p class="text-gray-400 text-sm">Pay once, access forever. All future updates included.</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6 text-center hover:border-gold/40 transition-all duration-300">
+       <div class="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="headphones" style="width:28px;height:28px;color:#c9a84c;"></i>
+       </div>
+       <h3 class="text-lg font-semibold mb-2">24/7 Support</h3>
+       <p class="text-gray-400 text-sm">Direct help and personalized guidance whenever you need it.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider mx-auto max-w-4xl"></div><!-- COURSES -->
+   <section id="courses" class="py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+     <div class="text-center mb-14"><span class="text-gold text-sm font-semibold uppercase tracking-widest">Our Courses</span>
+      <h2 class="font-display text-3xl md:text-5xl font-bold mt-3">What You Will Learn</h2>
+      <p class="text-gray-400 mt-4">Choose the path that fits your goals. Each course is complete and self-contained.</p>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8"><!-- Digital Products -->
+      <div class="pricing-card glass-card rounded-2xl overflow-hidden gold-glow">
+       <div class="img-wrapper"><img src="https://kartra.com/wp-content/uploads/2024/05/Graphic-3.jpg" alt="Digital Products Course" loading="lazy" onerror="console.error('Image failed:', this.src); this.style.background='linear-gradient(135deg,#1a1a1a,#2a2a2a)'; this.alt='Digital Products';">
+       </div>
+       <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+         <h3 class="font-display text-xl font-bold">Digital Products</h3><span class="text-gold font-display text-2xl font-bold">300 DH</span>
+        </div>
+        <ul class="space-y-2 text-sm text-gray-400 mb-6">
+         <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:16px;height:16px;color:#c9a84c;flex-shrink:0;margin-top:2px;"></i>Create &amp; sell digital products from scratch</li>
+         <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:16px;height:16px;color:#c9a84c;flex-shrink:0;margin-top:2px;"></i>No experience needed — start from zero</li>
+         <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:16px;height:16px;color:#c9a84c;flex-shrink:0;margin-top:2px;"></i>Proven methods for passive income</li>
+         <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:16px;height:16px;color:#c9a84c;flex-shrink:0;margin-top:2px;"></i>Marketing &amp; sales strategies included</li>
+        </ul><a href="https://wa.me/212780172071?text=I%20want%20to%20buy%20Digital%20Products%20course" target="_blank" rel="noopener noreferrer" class="btn-gold block text-center py-3 rounded-xl text-base">Buy Now</a>
+       </div>
+      </div><!-- Dropshipping -->
+      <div class="pricing-card glass-card rounded-2xl overflow-hidden gold-glow relative">
+       <div class="absolute top-4 right-4 z-10 bg-gold text-dark text-xs font-bold px-3 py-1 rounded-full">
+        POPULAR
+       </div>
+       <div class="img-wrapper"><img src="https://files.cdn.printful.com/o/upload/bfl-image/12/17416_l_Plan-de-travail-1.png" alt="Dropshipping Course" loading="lazy" onerror="console.error('Image failed:', this.src); this.style.background='linear-gradient(135deg,#1a1a1a,#2a2a2a)'; this.alt='Dropshipping';">
+       </div>
+       <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+         <h3 class="font-display text-xl font-bold">Dropshipping</h3><span class="text-gold font-display text-2xl font-bold">400 DH</span>
+        </div>
+        <ul class="space-y-2 text-sm text-gray-400 mb-6">
+         <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:16px;height:16px;color:#c9a84c;flex-shrink:0;margin-top:2px;"></i>Build a dropshipping store step-by-step</li>
+         <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:16px;height:16px;color:#c9a84c;flex-shrink:0;margin-top:2px;"></i>Find winning products that sell</li>
+         <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:16px;height:16px;color:#c9a84c;flex-shrink:0;margin-top:2px;"></i>Facebook &amp; TikTok ads strategies</li>
+         <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:16px;height:16px;color:#c9a84c;flex-shrink:0;margin-top:2px;"></i>Scale from 0 to consistent profit</li>
+        </ul><a href="https://wa.me/212780172071?text=I%20want%20to%20buy%20Dropshipping%20course" target="_blank" rel="noopener noreferrer" class="btn-gold block text-center py-3 rounded-xl text-base">Buy Now</a>
+       </div>
+      </div><!-- Ecommerce -->
+      <div class="pricing-card glass-card rounded-2xl overflow-hidden gold-glow">
+       <div class="img-wrapper"><img src="https://www.spacestem.com/images/ecommerce-steps-succesful.webp" alt="Ecommerce Course" loading="lazy" onerror="console.error('Image failed:', this.src); this.style.background='linear-gradient(135deg,#1a1a1a,#2a2a2a)'; this.alt='Ecommerce';">
+       </div>
+       <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+         <h3 class="font-display text-xl font-bold">Ecommerce</h3><span class="text-gold font-display text-2xl font-bold">500 DH</span>
+        </div>
+        <ul class="space-y-2 text-sm text-gray-400 mb-6">
+         <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:16px;height:16px;color:#c9a84c;flex-shrink:0;margin-top:2px;"></i>Launch a full ecommerce business</li>
+         <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:16px;height:16px;color:#c9a84c;flex-shrink:0;margin-top:2px;"></i>Inventory, branding &amp; logistics</li>
+         <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:16px;height:16px;color:#c9a84c;flex-shrink:0;margin-top:2px;"></i>Advanced marketing &amp; conversion tips</li>
+         <li class="flex items-start gap-2"><i data-lucide="check-circle" style="width:16px;height:16px;color:#c9a84c;flex-shrink:0;margin-top:2px;"></i>Build a brand that lasts</li>
+        </ul><a href="https://wa.me/212780172071?text=I%20want%20to%20buy%20Ecommerce%20course" target="_blank" rel="noopener noreferrer" class="btn-gold block text-center py-3 rounded-xl text-base">Buy Now</a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider mx-auto max-w-4xl"></div><!-- PREMIUM VALUE -->
+   <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center"><span class="text-gold text-sm font-semibold uppercase tracking-widest">Premium Value</span>
+     <h2 class="font-display text-3xl md:text-5xl font-bold mt-3 mb-12">What Makes Us Different</h2>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="float-anim">
+       <div class="w-16 h-16 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center mx-auto mb-5"><i data-lucide="brain" style="width:32px;height:32px;color:#c9a84c;"></i>
+       </div>
+       <h3 class="font-semibold text-lg mb-2">Advanced Strategies</h3>
+       <p class="text-gray-400 text-sm">Learn from people who have been in the game and know what actually works.</p>
+      </div>
+      <div class="float-anim" style="animation-delay: 1s;">
+       <div class="w-16 h-16 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center mx-auto mb-5"><i data-lucide="bar-chart-3" style="width:32px;height:32px;color:#c9a84c;"></i>
+       </div>
+       <h3 class="font-semibold text-lg mb-2">Real Case Studies</h3>
+       <p class="text-gray-400 text-sm">See real results, real numbers, and real businesses built using our methods.</p>
+      </div>
+      <div class="float-anim" style="animation-delay: 2s;">
+       <div class="w-16 h-16 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center mx-auto mb-5"><i data-lucide="settings" style="width:32px;height:32px;color:#c9a84c;"></i>
+       </div>
+       <h3 class="font-semibold text-lg mb-2">Systems That Work</h3>
+       <p class="text-gray-400 text-sm">Step-by-step systems you can follow and replicate for your own success.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider mx-auto max-w-4xl"></div><!-- SUPPORT -->
+   <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+     <div class="glass-card rounded-3xl p-10 md:p-14 text-center gold-glow">
+      <div class="w-20 h-20 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center mx-auto mb-6"><i data-lucide="shield-check" style="width:40px;height:40px;color:#c9a84c;"></i>
+      </div>
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">We're With You Every Step</h2>
+      <p class="text-gray-400 max-w-xl mx-auto mb-8 leading-relaxed">Get 24/7 support, direct personal help, and guidance until you fully understand the business. We don't leave you alone — <span class="text-gold font-semibold">we guide you until you succeed.</span></p>
+      <div id="guarantee-text" class="inline-block glass-card rounded-xl px-8 py-4 text-gold font-display text-lg font-semibold">
+       "We guide you until you fully understand the business"
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider mx-auto max-w-4xl"></div><!-- WHATSAPP -->
+   <section class="py-20 px-6">
+    <div class="max-w-3xl mx-auto text-center"><span class="text-gold text-sm font-semibold uppercase tracking-widest">Get In Touch</span>
+     <h2 class="font-display text-3xl md:text-4xl font-bold mt-3 mb-4">Ready to Start?</h2>
+     <p class="text-gray-400 mb-10">Reach out to us directly on WhatsApp. We respond fast.</p>
+     <div class="flex flex-col sm:flex-row gap-5 justify-center"><a href="https://wa.me/212780172071" target="_blank" rel="noopener noreferrer" class="btn-whatsapp px-10 py-4 rounded-xl text-lg flex items-center justify-center gap-3"> <i data-lucide="message-circle" style="width:22px;height:22px;"></i> تواصل معنا دبا (1) </a> <a href="https://wa.me/212618776630" target="_blank" rel="noopener noreferrer" class="btn-whatsapp px-10 py-4 rounded-xl text-lg flex items-center justify-center gap-3"> <i data-lucide="message-circle" style="width:22px;height:22px;"></i> تواصل معنا دبا (2) </a>
+     </div>
+    </div>
+   </section>
+   <div class="section-divider mx-auto max-w-4xl"></div><!-- FINAL CTA -->
+   <section class="py-24 px-6 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);"></div>
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+     <h2 id="final-headline" class="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">Don't Miss Your Chance — <span class="text-gold">Start Building Your Income Today</span></h2>
+     <p class="text-gray-400 mt-6 text-lg">The best time to start was yesterday. The second best time is now.</p><a href="#courses" id="final-cta-btn" class="btn-gold inline-block mt-10 px-14 py-5 rounded-xl text-xl pulse-ring">Buy Now Before It's Too Late</a>
+    </div>
+   </section><!-- FOOTER -->
+   <footer class="py-10 px-6 border-t border-white/5">
+    <div class="max-w-4xl mx-auto text-center text-gray-600 text-sm">
+     <p>© 2025 Online Academy. All rights reserved.</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+  // Initialize Lucide
+  lucide.createIcons();
+
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(s => {
+    // Don't re-animate hero
+    if (!s.querySelector('.hero-gradient')) {
+      const els = s.querySelectorAll('h2, h3, .glass-card, .pricing-card, .float-anim, .btn-gold, .btn-whatsapp');
+    }
+  });
+
+  // Element SDK
+  const defaultConfig = {
+    hero_headline: 'Start Making Money Online From Zero — Even If You Have No Experience',
+    hero_subheadline: 'Learn step-by-step how to build real online income using Digital Products, Dropshipping, and Ecommerce with proven strategies.',
+    cta_button_text: 'Buy Now & Start Today',
+    about_title: 'Why Choose Our Academy?',
+    guarantee_text: '"We guide you until you fully understand the business"',
+    final_headline: "Don't Miss Your Chance — Start Building Your Income Today",
+    final_button_text: 'Buy Now Before It\'s Too Late',
+    background_color: '#0a0a0a',
+    accent_color: '#c9a84c',
+    text_color: '#ffffff',
+    card_color: '#111111',
+    secondary_action_color: '#25d366',
+    font_family: 'DM Sans',
+    font_size: 16
+  };
+
+  function applyConfig(config) {
+    const c = { ...defaultConfig, ...config };
+
+    // Text content
+    const heroH = document.getElementById('hero-headline');
+    if (heroH) heroH.innerHTML = c.hero_headline.replace(/(Even If You Have No Experience|—.*)/i, '<span class="text-gold">$&</span>');
+
+    const heroS = document.getElementById('hero-sub');
+    if (heroS) heroS.textContent = c.hero_subheadline;
+
+    const heroCta = document.getElementById('hero-cta');
+    if (heroCta) heroCta.textContent = c.cta_button_text;
+
+    const aboutT = document.getElementById('about-title');
+    if (aboutT) aboutT.textContent = c.about_title;
+
+    const guar = document.getElementById('guarantee-text');
+    if (guar) guar.textContent = c.guarantee_text;
+
+    const finalH = document.getElementById('final-headline');
+    if (finalH) {
+      const parts = c.final_headline.split('—');
+      finalH.innerHTML = parts.length > 1
+        ? `${parts[0]}— <span class="text-gold">${parts[1].trim()}</span>`
+        : c.final_headline;
+    }
+
+    const finalBtn = document.getElementById('final-cta-btn');
+    if (finalBtn) finalBtn.textContent = c.final_button_text;
+
+    // Colors
+    document.body.style.backgroundColor = c.background_color;
+    document.documentElement.style.setProperty('color', c.text_color);
+
+    // Font
+    const fontStack = `${c.font_family}, 'DM Sans', sans-serif`;
+    document.body.style.fontFamily = fontStack;
+
+    // Font size scaling
+    const base = c.font_size || 16;
+    document.body.style.fontSize = `${base}px`;
+  }
+
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => applyConfig(config),
+    mapToCapabilities: (config) => ({
+      recolorables: [
+        { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+        { get: () => config.card_color || defaultConfig.card_color, set: (v) => { config.card_color = v; window.elementSdk.setConfig({ card_color: v }); } },
+        { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+        { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } },
+        { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } },
+      ],
+      borderables: [],
+      fontEditable: {
+        get: () => config.font_family || defaultConfig.font_family,
+        set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+      },
+      fontSizeable: {
+        get: () => config.font_size || defaultConfig.font_size,
+        set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+      }
+    }),
+    mapToEditPanelValues: (config) => new Map([
+      ['hero_headline', config.hero_headline || defaultConfig.hero_headline],
+      ['hero_subheadline', config.hero_subheadline || defaultConfig.hero_subheadline],
+      ['cta_button_text', config.cta_button_text || defaultConfig.cta_button_text],
+      ['about_title', config.about_title || defaultConfig.about_title],
+      ['guarantee_text', config.guarantee_text || defaultConfig.guarantee_text],
+      ['final_headline', config.final_headline || defaultConfig.final_headline],
+      ['final_button_text', config.final_button_text || defaultConfig.final_button_text],
+    ])
+  });
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e913cdd472e6926',t:'MTc3NTY1MDk0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
